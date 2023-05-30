@@ -2,12 +2,12 @@
   "name": "weather",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/app.js",
   "engines": {
     "node": "18.x"
   },
   "scripts": {
-    "start": "node src/app.js",
+    "start": "nodemon -e js,hbs src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
