@@ -8,7 +8,6 @@
   },
   "scripts": {
     "start": "node -e js,hbs src/app.js",
-    "dev": "nodemon -e js,hbs src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
