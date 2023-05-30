@@ -1,6 +1,6 @@
 const express = require("express");
-const weather = require("./src/utils/weather");
-const geo = require("./src/utils/geo");
+const weather = require("./utils/weather");
+const geo = require("./utils/geo");
 const path = require('path');
 var hbs = require('hbs');
 
