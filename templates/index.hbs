@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Title</title>
+    <style>
+        h2 {
+            color: red;
+            text-align: center;
+             font-size: 30px;
+            font-weight: bold;
+        }
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
+        input {
+            padding: 5px 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        button {
+             padding: 5px 10px;
+             background-color: purple;
+             color: cyan;
+             font-weight: bold;
+             font-size: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 20px;
+            color: purple;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    {{>nav}}
+    <h2>Welcome from HBS</h2>
+    <form>
+        <input type="text" placeholder="Location" />
+        <button>Search</button>
+    </form>
+
+    <p id="loc">Matara</p>
+    <p id="we">Currently overcast clouds and temparature 30.22C</p>
+
+    <script>
+        const wForm = document.querySelector('form');
+        const search = document.querySelector('input');
+        const loc = document.querySelector('#loc');
+        const we = document.querySelector('#we');
+
+        wForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const location = search.value
+            loc.textContent = "Loading ..."
+            we.textContent = ""
+
+            fetch('/weather?address='+location)
+            .then((res)=>{
+                res.json()
+                .then((data)=>{
+                    if(data.error){
+                        loc.textContent = data.error
+                    }else {
+                        loc.textContent = location
+                        we.textContent = data.weather
+                    }
+                })
+            })
+
+
+        })
+    </script>
+
+</body>
+
+</html>
